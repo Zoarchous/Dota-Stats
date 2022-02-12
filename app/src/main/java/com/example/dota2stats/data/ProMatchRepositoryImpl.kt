@@ -1,22 +1,22 @@
 package com.example.dota2stats.data
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.dota2stats.data.remoteModel.RemoteDataSource
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.domain.proMatches.ProMatchRepository
-import java.lang.RuntimeException
+import javax.inject.Inject
 
-object ProMatchRepositoryImpl: ProMatchRepository {
-    private val proMatchList = mutableListOf<ProMatchItem>()
-    private val proMatchListLD = MutableLiveData<List<ProMatchItem>>()
+class ProMatchRepositoryImpl @Inject constructor(
+    private val remoteDataSource: RemoteDataSource
+    ) : ProMatchRepository {
 
-    override fun getProMatchesList(): LiveData<List<ProMatchItem>> {
-        return proMatchListLD
-    }
+//    override suspend fun getProMatchesList(): List<ProMatchItem> {
+//        return remoteDataSource.getRemoteProMatchesList()
+//    }
+    override suspend fun getProMatchesList() = remoteDataSource.getRemoteProMatchesList()
+
 
     override fun getProMatchItem(matchId: Long): ProMatchItem {
-        return proMatchList.find {
-            it.match_id == matchId
-        } ?:throw RuntimeException("Element with id $matchId not found")
+        TODO()
     }
 }
