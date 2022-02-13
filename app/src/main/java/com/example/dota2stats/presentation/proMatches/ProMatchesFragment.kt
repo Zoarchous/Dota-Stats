@@ -5,17 +5,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dota2stats.R
+import com.example.dota2stats.databinding.FragmentProMatchesBinding
+import com.example.dota2stats.presentation.MainActivity
+import com.example.dota2stats.presentation.MainViewModel
+import com.example.dota2stats.presentation.MainViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class ProMatchesFragment : Fragment() {
-
-
+    private lateinit var binding: FragmentProMatchesBinding
+    private lateinit var recyclerAdapter: ProMatchesAdapter
+    private lateinit var viewModel: MainViewModel
+    private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentProMatchesBinding.inflate(inflater)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_pro_matches, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecycler()
+        setupViewModel()
+        viewModel.list.observe(this){
+            recyclerAdapter.submitList(it)
+        }
+    }
+
+    private fun setupViewModel(){
+        viewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
+        scope.launch {
+            viewModel.getProMatches()
+        }
+    }
+    private fun setupRecycler(){
+        with(binding.proMatchesRecView){
+            recyclerAdapter = ProMatchesAdapter()
+            adapter = recyclerAdapter
+        }
     }
 
 //    companion object {

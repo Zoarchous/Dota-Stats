@@ -11,6 +11,8 @@ import com.example.dota2stats.domain.proMatches.ProMatchItem
 
 class ProMatchesAdapter:
     ListAdapter<ProMatchItem, ProMatchItemViewHolder>(ProMatchItemDiffCallback()) {
+    var onProMatchClickListener: ((ProMatchItem) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -37,5 +39,8 @@ class ProMatchesAdapter:
             viewHolder.radiantIcon.visibility = View.GONE
         }
 
+        viewHolder.view.setOnClickListener {
+            onProMatchClickListener?.invoke(item)
+        }
     }
 }

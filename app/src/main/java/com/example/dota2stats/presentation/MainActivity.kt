@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dota2stats.R
 import com.example.dota2stats.domain.proMatches.ProMatchItem
@@ -17,31 +19,16 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var recyclerAdapter: ProMatchesAdapter
+    lateinit var navController: NavController
     private lateinit var viewModel: MainViewModel
     @Inject lateinit var factory: MainViewModelFactory
-    private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_pro_matches)
-        setupRecycler()
-        setupViewModel()
-        viewModel.list.observe(this) {
-            recyclerAdapter.submitList(it)
-        }
-
-    }
-    private fun setupViewModel(){
+        setContentView(R.layout.activity_main)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+        navController = navHostFragment.navController
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
-        scope.launch {
-            viewModel.getProMatches()
-        }
     }
-    private fun setupRecycler(){
-        val recycler = findViewById<RecyclerView>(R.id.proMatchesRecView)
-        with(recycler){
-            recyclerAdapter = ProMatchesAdapter()
-            adapter = recyclerAdapter
-        }
-    }
+
 }
