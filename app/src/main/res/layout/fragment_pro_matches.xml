@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/pro_match_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
