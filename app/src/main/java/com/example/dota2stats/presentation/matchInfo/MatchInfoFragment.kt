@@ -21,7 +21,6 @@ import javax.inject.Inject
 class MatchInfoFragment : Fragment() {
     private lateinit var binding: FragmentMatchInfoBinding
     private lateinit var viewModel: MatchInfoViewModel
-    @Inject lateinit var factory: MatchInfoViewModelFactory
     private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
