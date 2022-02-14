@@ -9,6 +9,19 @@
         android:id="@+id/proMatchesFragment"
         android:name="com.example.dota2stats.presentation.proMatches.ProMatchesFragment"
         tools:layout="@layout/fragment_pro_matches"
-        />
+        >
+        <action
+            android:id="@+id/action_proMatchesFragment_to_matchInfoFragment"
+            app:destination="@id/matchInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchInfoFragment"
+        android:name="com.example.dota2stats.presentation.matchInfo.MatchInfoFragment"
+        android:label="fragment_match_info"
+        tools:layout="@layout/fragment_match_info" >
+        <argument
+            android:name="matchId"
+            app:argType="long" />
+    </fragment>
 
 </navigation>

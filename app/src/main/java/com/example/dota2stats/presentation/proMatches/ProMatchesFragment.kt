@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dota2stats.R
 import com.example.dota2stats.databinding.FragmentProMatchesBinding
@@ -41,14 +42,22 @@ class ProMatchesFragment : Fragment() {
 
     private fun setupViewModel(){
         viewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
-        scope.launch {
-            viewModel.getProMatches()
-        }
+        viewModel.getProMatches()
+
     }
     private fun setupRecycler(){
         with(binding.proMatchesRecView){
             recyclerAdapter = ProMatchesAdapter()
             adapter = recyclerAdapter
+        }
+        setupItemClickListener()
+    }
+    private fun setupItemClickListener(){
+        recyclerAdapter.onProMatchClickListener = {
+            this.findNavController().navigate(
+                ProMatchesFragmentDirections
+                    .actionProMatchesFragmentToMatchInfoFragment(it.match_id)
+            )
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.dota2stats.data.remoteModel
 
 import android.util.Log
+import com.example.dota2stats.domain.matchInfo.MatchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import javax.inject.Inject
 
@@ -16,6 +17,9 @@ class RemoteDataSource @Inject constructor() {
         } catch (e: Exception) {
             mutableListOf()
         }
+    }
 
+    suspend fun getMatchInfo(matchId: Long): MatchItem {
+        return apiRequest.getMatchInfo(matchId)
     }
 }
