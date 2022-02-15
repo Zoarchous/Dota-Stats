@@ -10,10 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        app:cardCornerRadius="@dimen/default_corner_radius">
+        style="@style/ProMatchItemCardView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,23 +18,25 @@
 
             <TextView
                 android:id="@+id/leagueName"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/radiantIcon"
+                app:layout_constraintEnd_toStartOf="@+id/radiantTeam"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_vertical|center_horizontal"
                 tools:text="The International 10"
-                android:gravity="center|center_vertical" />
+                style="@style/proMatchItemTextView"
+               />
 
             <ImageView
                 android:id="@+id/radiantIcon"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                app:layout_constraintEnd_toStartOf="@+id/radiantTeam"
+                app:layout_constraintEnd_toStartOf="@+id/matchTime"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/leagueName"
+                app:layout_constraintStart_toEndOf="@+id/radiantTeam"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:src="@drawable/ic_android_black_24dp"
@@ -45,36 +44,47 @@
 
             <TextView
                 android:id="@+id/radiantTeam"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/matchTime"
+                app:layout_constraintEnd_toStartOf="@+id/radiantIcon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/leagueName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Natus Vincere"
+                style="@style/proMatchItemTextView"
+                android:gravity="center_vertical|center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/radiantGreen"/>
+
+            <TextView
+                android:id="@+id/matchTime"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/direTeam"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/radiantIcon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Natus Vincere"/>
-
-            <TextView
-                android:id="@+id/matchTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/direTeam"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/radiantTeam"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="41:35"/>
+                android:textAlignment="gravity"
+                android:gravity="center_horizontal"
+                tools:text="41:35"
+                style="@style/proMatchItemTextView"/>
 
             <TextView
                 android:id="@+id/direTeam"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toStartOf="@+id/direIcon"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/matchTime"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Evil Geniuses"/>
+                android:maxWidth="60dp"
+                tools:text="Evil Geniuses"
+                style="@style/proMatchItemTextView"
+                android:textStyle="bold"
+                android:textColor="@color/direRed"/>
 
             <ImageView
                 android:id="@+id/direIcon"

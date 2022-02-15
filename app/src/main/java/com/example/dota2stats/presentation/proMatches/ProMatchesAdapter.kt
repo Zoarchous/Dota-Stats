@@ -27,16 +27,16 @@ class ProMatchesAdapter:
 
     override fun onBindViewHolder(viewHolder: ProMatchItemViewHolder, position: Int) {
         val item = getItem(position)
-        viewHolder.league.text = item.league_name
-        viewHolder.direName.text = item.dire_name
-        viewHolder.radiantName.text = item.radiant_name
+        viewHolder.league.text = item.leagueid.toString()
+        viewHolder.direName.text = item.dire_name ?: "Dire"
+        viewHolder.radiantName.text = item.radiant_name ?: "Radiant"
         viewHolder.time.text = item.duration.toString()
         viewHolder.direIcon.setImageResource(ic_android_black_24dp)
         viewHolder.radiantIcon.setImageResource(ic_android_black_24dp)
         if (item.radiant_win){
-            viewHolder.direIcon.visibility = View.GONE
+            viewHolder.direIcon.visibility = View.INVISIBLE
         } else {
-            viewHolder.radiantIcon.visibility = View.GONE
+            viewHolder.radiantIcon.visibility = View.INVISIBLE
         }
 
         viewHolder.view.setOnClickListener {

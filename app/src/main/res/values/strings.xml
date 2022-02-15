@@ -6,4 +6,8 @@
     <string name="score_divider">:</string>
     <string name="dire">DIRE</string>
     <string name="slash">/</string>
+    <string name="league_header">League</string>
+    <string name="radiant_header">Radiant</string>
+    <string name="duration_header">Duration</string>
+    <string name="dire_header">Dire</string>
 </resources>

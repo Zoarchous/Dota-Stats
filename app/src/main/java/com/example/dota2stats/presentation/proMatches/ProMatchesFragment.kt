@@ -37,6 +37,10 @@ class ProMatchesFragment : Fragment() {
         setupViewModel()
         viewModel.list.observe(this){
             recyclerAdapter.submitList(it)
+            when (it.isEmpty()){
+                true -> binding.progressBar.visibility = View.VISIBLE
+                else -> binding.progressBar.visibility = View.GONE
+            }
         }
     }
 
