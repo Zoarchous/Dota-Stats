@@ -13,6 +13,7 @@ data class InMatchPlayerItem (
     val hero_healing: Int,
     val hero_id: Int,
     val isRadiant: Boolean,
+    val kills: Int,
     val kda: Int,
     val level: Int,
     val match_id: Long,

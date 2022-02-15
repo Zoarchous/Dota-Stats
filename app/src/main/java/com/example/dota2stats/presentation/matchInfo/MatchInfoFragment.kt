@@ -21,15 +21,23 @@ import javax.inject.Inject
 class MatchInfoFragment : Fragment() {
     private lateinit var binding: FragmentMatchInfoBinding
     private lateinit var viewModel: MatchInfoViewModel
-    private val scope = CoroutineScope(Dispatchers.IO)
+    private lateinit var recyclerAdapter: MatchInfoPlayerAdapter
+    private lateinit var recyclerAdapter2: MatchInfoPlayerAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMatchInfoBinding.inflate(inflater)
         setupViewModel()
-        viewModel.match.observe(this, {
-            Log.d("!!!Match", it.toString())
+        setupRecycler()
+        viewModel.players.observe(this, {
+            recyclerAdapter.submitList(it.filter {inMatchPlayerItem ->
+                inMatchPlayerItem.player_slot <= 5
+            })
+            recyclerAdapter2.submitList(it.filter { item ->
+                item.player_slot >= 6
+            })
+            Log.d("!!!list", it.toString())
         })
 
         return binding.root
@@ -39,7 +47,18 @@ class MatchInfoFragment : Fragment() {
         val arguments = MatchInfoFragmentArgs.fromBundle(requireArguments())
         viewModel = ViewModelProvider(activity as MainActivity)[MatchInfoViewModel::class.java]
         viewModel.matchId = arguments.matchId
-        viewModel.showMatchInfo()
+        viewModel.getPlayersList()
+    }
+
+    private fun setupRecycler(){
+        with(binding.radiantTeamPlayers){
+            recyclerAdapter = MatchInfoPlayerAdapter()
+            adapter = recyclerAdapter
+        }
+        with(binding.direTeamPlayers){
+            recyclerAdapter2 = MatchInfoPlayerAdapter()
+            adapter = recyclerAdapter2
+        }
     }
 
 }
