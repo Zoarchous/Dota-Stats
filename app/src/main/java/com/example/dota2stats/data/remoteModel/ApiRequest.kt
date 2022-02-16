@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-val BASE_URL = "https://api.opendota.com/api/"
+const val BASE_URL = "https://api.opendota.com/api/"
 
 interface ApiRequest {
     @GET("proMatches")

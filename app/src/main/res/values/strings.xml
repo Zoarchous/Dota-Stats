@@ -2,12 +2,20 @@
     <string name="app_name">Dota 2 Stats</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="radiantTeam">RADIANT</string>
+    <string name="radiantTeam">Radiant</string>
     <string name="score_divider">:</string>
-    <string name="dire">DIRE</string>
+    <string name="dire">Dire</string>
     <string name="slash">/</string>
     <string name="league_header">League</string>
     <string name="radiant_header">Radiant</string>
     <string name="duration_header">Duration</string>
     <string name="dire_header">Dire</string>
+    <string name="duration_with_dots">Duration:</string>
+    <string name="game_mode_with_dots">Game mode:</string>
+    <string name="radiant_team">Radiant Team</string>
+    <string name="hero">Hero</string>
+    <string name="name">Name</string>
+    <string name="kda">KDA</string>
+    <string name="hero_lvl">LVL</string>
+    <string name="dire_team">Dire Team</string>
 </resources>

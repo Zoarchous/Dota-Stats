@@ -23,9 +23,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var matchInfoViewModel: MatchInfoViewModel
     @Inject lateinit var mainFactory: MainViewModelFactory
-    @Inject lateinit var matchFactory: MatchInfoViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         mainViewModel =
             ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
-        matchInfoViewModel =
-            ViewModelProvider(this, matchFactory)[MatchInfoViewModel::class.java]
     }
 
 }

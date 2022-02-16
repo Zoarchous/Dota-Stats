@@ -32,5 +32,4 @@ class MainViewModel (repository: ProMatchRepository): ViewModel() {
         }
     }
 
-
 }
