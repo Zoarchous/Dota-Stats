@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.dota2stats.R
 import com.example.dota2stats.R.drawable.ic_android_black_24dp
 import com.example.dota2stats.domain.proMatches.ProMatchItem
+import com.example.dota2stats.formatTime
 
 class ProMatchesAdapter:
     ListAdapter<ProMatchItem, ProMatchItemViewHolder>(ProMatchItemDiffCallback()) {
@@ -30,7 +31,7 @@ class ProMatchesAdapter:
         viewHolder.league.text = item.leagueid.toString()
         viewHolder.direName.text = item.dire_name ?: "Dire"
         viewHolder.radiantName.text = item.radiant_name ?: "Radiant"
-        viewHolder.time.text = item.duration.toString()
+        viewHolder.time.text = formatTime(item.duration)
         viewHolder.direIcon.setImageResource(ic_android_black_24dp)
         viewHolder.radiantIcon.setImageResource(ic_android_black_24dp)
         if (item.radiant_win){

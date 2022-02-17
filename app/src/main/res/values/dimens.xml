@@ -6,4 +6,6 @@
     <dimen name="default_card_radius">15dp</dimen>
     <dimen name="double_margin">16dp</dimen>
     <dimen name="header_text_size">18sp</dimen>
+    <dimen name="match_info_item_width">80dp</dimen>
+    <dimen name="hero_icon_end_margin">40dp</dimen>
 </resources>

@@ -10,7 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.dota2stats.data.ProMatchRepositoryImpl
 import com.example.dota2stats.data.remoteModel.RemoteDataSource
 import com.example.dota2stats.databinding.FragmentMatchInfoBinding
+import com.example.dota2stats.formatTime
 import com.example.dota2stats.presentation.MainActivity
+import com.example.dota2stats.showGameMode
 import dagger.Component
 import javax.inject.Inject
 
@@ -30,11 +32,15 @@ class MatchInfoFragment : Fragment() {
         setupRecycler()
 
         viewModel.matchItem.observe(this, {
-
+            if (it.radiant_win){
+                binding.direWin.visibility = View.GONE
+            }else{
+                binding.radintWin.visibility = View.GONE
+            }
             binding.radiantScore.text = it.radiant_score.toString()
             binding.direScore.text = it.dire_score.toString()
-            binding.matchDuration.text = it.duration.toString()
-            binding.gameMode.text = it.game_mode.toString()
+            binding.matchDuration.text = formatTime(it.duration)
+            binding.gameMode.text = showGameMode(it.game_mode)
         })
         viewModel.players.observe(this, {
             if (it.isNotEmpty()){
