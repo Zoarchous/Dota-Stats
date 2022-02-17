@@ -22,7 +22,6 @@ class MatchInfoFragment : Fragment() {
     private lateinit var viewModel: MatchInfoViewModel
     private lateinit var radiantTeamAdapter: MatchInfoPlayerAdapter
     private lateinit var direTeamAdapter: MatchInfoPlayerAdapter
-    @Inject lateinit var matchFactory: MatchInfoViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,8 +60,7 @@ class MatchInfoFragment : Fragment() {
 
     private fun setupViewModel() {
         val arguments = MatchInfoFragmentArgs.fromBundle(requireArguments())
-        matchFactory = MatchInfoViewModelFactory(repository = ProMatchRepositoryImpl(remoteDataSource = RemoteDataSource()))
-        viewModel = ViewModelProvider(this, matchFactory)[MatchInfoViewModel::class.java]
+        viewModel = ViewModelProvider(activity as MainActivity)[MatchInfoViewModel::class.java]
         viewModel.matchId = arguments.matchId
         viewModel.getPlayersList()
     }

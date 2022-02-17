@@ -23,6 +23,8 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var matchViewModel: MatchInfoViewModel
+    @Inject lateinit var matchFactory: MatchInfoViewModelFactory
     @Inject lateinit var mainFactory: MainViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         mainViewModel =
             ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
+
+        matchViewModel =
+            ViewModelProvider(this, matchFactory)[MatchInfoViewModel::class.java]
     }
 
 }
