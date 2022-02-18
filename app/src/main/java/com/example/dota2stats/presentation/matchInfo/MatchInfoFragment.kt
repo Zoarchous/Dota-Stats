@@ -7,14 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.dota2stats.data.ProMatchRepositoryImpl
-import com.example.dota2stats.data.remoteModel.RemoteDataSource
 import com.example.dota2stats.databinding.FragmentMatchInfoBinding
 import com.example.dota2stats.formatTime
 import com.example.dota2stats.presentation.MainActivity
 import com.example.dota2stats.showGameMode
-import dagger.Component
-import javax.inject.Inject
 
 
 class MatchInfoFragment : Fragment() {

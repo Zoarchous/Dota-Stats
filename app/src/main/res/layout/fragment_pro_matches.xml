@@ -17,12 +17,16 @@
             android:id="@+id/proMatchesSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_background"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginEnd="@dimen/default_margin" />
+            app:queryHint="@string/search_view_hint"
+            app:iconifiedByDefault="false"
+            />
 
         <LinearLayout
             android:id="@+id/proMatchHeader"

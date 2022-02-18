@@ -1,21 +1,18 @@
 package com.example.dota2stats.presentation.matchInfo
 
-import android.util.Log
-import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dota2stats.domain.matchInfo.GetMatchInfoUseCase
 import com.example.dota2stats.domain.matchInfo.InMatchPlayerItem
 import com.example.dota2stats.domain.matchInfo.MatchItem
-import com.example.dota2stats.domain.proMatches.ProMatchRepository
+import com.example.dota2stats.domain.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MatchInfoViewModel(
-    repository: ProMatchRepository,
+    repository: Repository,
     var matchId: Long = 0L
 ) : ViewModel() {
 

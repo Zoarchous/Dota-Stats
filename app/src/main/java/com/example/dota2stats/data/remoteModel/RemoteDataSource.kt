@@ -2,6 +2,7 @@ package com.example.dota2stats.data.remoteModel
 
 import android.util.Log
 import com.example.dota2stats.domain.matchInfo.MatchItem
+import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import javax.inject.Inject
 
@@ -21,5 +22,9 @@ class RemoteDataSource @Inject constructor() {
 
     suspend fun getMatchInfo(matchId: Long): MatchItem {
         return apiRequest.getMatchInfo(matchId)
+    }
+
+    suspend fun searchPlayers(nickname: String): MutableList<PlayerSearchItem>{
+        return apiRequest.searchPlayers(nickname)
     }
 }

@@ -1,7 +1,9 @@
 package com.example.dota2stats.domain.proMatches
 
-class GetProMatchItemUseCase (private val proMatchRepository: ProMatchRepository) {
+import com.example.dota2stats.domain.Repository
+
+class GetProMatchItemUseCase (private val repository: Repository) {
     fun getProMatchItem(matchId: Long): ProMatchItem{
-        return proMatchRepository.getProMatchItem(matchId)
+        return repository.getProMatchItem(matchId)
     }
 }

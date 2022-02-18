@@ -18,4 +18,6 @@
     <string name="kda">KDA</string>
     <string name="hero_lvl">LVL</string>
     <string name="dire_team">Dire Team</string>
+    <string name="search_view_hint">Enter player name</string>
+    <string name="match_info_fragment_label">Match Details</string>
 </resources>
