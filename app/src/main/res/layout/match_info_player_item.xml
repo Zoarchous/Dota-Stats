@@ -1,124 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_background"
+    android:layout_marginStart="@dimen/default_margin"
     android:layout_marginEnd="@dimen/default_margin"
-    style="@style/HeaderCardView">
+    android:layout_marginTop="@dimen/default_margin">
+
+    <ImageView
+        android:id="@+id/heroIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_android_black_24dp" />
+
+    <TextView
+        android:id="@+id/playerName"
+        style="@style/MatchInfoItemTextView"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/heroIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="FLEK$$" />
+
+    <TextView
+        android:id="@+id/kills"
+        style="@style/MatchInfoItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:maxWidth="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/playerName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="11" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/death"
+        style="@style/MatchInfoItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kills"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="0" />
 
-        <ImageView
-            android:id="@+id/heroIcon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="@dimen/hero_icon_end_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/playerName"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_android_black_24dp" />
+    <TextView
+        android:id="@+id/assists"
+        style="@style/MatchInfoItemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/death"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="7" />
 
-        <TextView
-            android:id="@+id/playerName"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/kills"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/heroIcon"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/MatchInfoTextView"
-            tools:text="FLEK$$"
-            android:gravity="center_vertical"
-            />
-
-        <TextView
-            android:id="@+id/kills"
-            style="@style/MatchInfoTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/div1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/playerName"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="11" />
-
-        <TextView
-            android:id="@+id/div1"
-            style="@style/MatchInfoTextView"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/slash"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/death"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/kills"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/death"
-            style="@style/MatchInfoTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/div2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/div1"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="0" />
-
-        <TextView
-            android:id="@+id/div2"
-            style="@style/MatchInfoTextView"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:text="@string/slash"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/assists"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/death"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/assists"
-            style="@style/MatchInfoTextView"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/heroLvl"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/div2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="7" />
-
-        <TextView
-            android:id="@+id/heroLvl"
-            style="@style/MatchInfoTextView"
-            android:layout_width="@dimen/match_info_item_width"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/assists"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="25" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="heroIcon,playerName,kills,div1,death,div2,assists,heroLvl" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/heroLvl"
+        style="@style/MatchInfoItemTextView"
+        android:layout_width="@dimen/match_info_item_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/double_margin"
+        tools:text="25" />
+</androidx.constraintlayout.widget.ConstraintLayout>

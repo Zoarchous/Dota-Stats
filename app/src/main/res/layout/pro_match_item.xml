@@ -39,7 +39,7 @@
                 app:layout_constraintStart_toEndOf="@+id/radiantTeam"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:src="@drawable/ic_android_black_24dp"
+                tools:src="@drawable/trophy"
                 android:visibility="visible"/>
 
             <TextView
@@ -95,7 +95,7 @@
                 app:layout_constraintStart_toEndOf="@+id/direTeam"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:src="@drawable/ic_android_black_24dp"
+                tools:src="@drawable/trophy"
                 android:visibility="visible"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

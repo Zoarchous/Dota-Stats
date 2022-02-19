@@ -23,7 +23,6 @@ class ProMatchesFragment : Fragment() {
     private lateinit var binding: FragmentProMatchesBinding
     private lateinit var recyclerAdapter: ProMatchesAdapter
     private lateinit var viewModel: MainViewModel
-    private val scope = CoroutineScope(Dispatchers.IO)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -78,6 +77,7 @@ class ProMatchesFragment : Fragment() {
                 ProMatchesFragmentDirections
                     .actionProMatchesFragmentToMatchInfoFragment(it.match_id)
             )
+
         }
     }
 }

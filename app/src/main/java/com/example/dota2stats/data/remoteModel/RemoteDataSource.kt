@@ -1,13 +1,17 @@
 package com.example.dota2stats.data.remoteModel
 
 import android.util.Log
+import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor() {
-    val apiRequest = ApiRequest.create()
+    private val apiRequest = ApiRequest.create()
 
 
     suspend fun getRemoteProMatchesList(): MutableList<ProMatchItem> {
@@ -26,5 +30,9 @@ class RemoteDataSource @Inject constructor() {
 
     suspend fun searchPlayers(nickname: String): MutableList<PlayerSearchItem>{
         return apiRequest.searchPlayers(nickname)
+    }
+
+    suspend fun getHeroes(): MutableList<Hero>{
+        return apiRequest.getHeroes()
     }
 }

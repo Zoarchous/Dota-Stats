@@ -1,5 +1,13 @@
 package com.example.dota2stats
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.dota2stats.data.remoteModel.ApiRequest
+import com.example.dota2stats.domain.constants.Hero
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 fun formatTime (duration: Int): String {
     var time = duration
     val minutes = time/60
@@ -43,4 +51,32 @@ fun showGameMode (mode: Int): String {
         24 -> "Mutation"
         else -> "Unknown"
     }
+}
+
+fun findHero(heroId: Int): Int{
+    val heroPosition = when {
+        heroId <= 23 -> {
+            heroId-1
+        }
+        heroId <= 114 -> {
+            heroId - 2
+        }
+
+        heroId <= 121 ->  {
+            heroId - 6
+        }
+        heroId == 123 -> {
+            heroId - 7
+        }
+        heroId == 126 -> {
+            heroId - 9
+        }
+        heroId <= 129 -> {
+            heroId - 10
+        }
+        else -> {
+            heroId - 11
+        }
+    }
+    return heroPosition
 }

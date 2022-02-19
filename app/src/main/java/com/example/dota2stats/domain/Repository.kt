@@ -1,8 +1,10 @@
 package com.example.dota2stats.domain
 
+import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
+import retrofit2.Call
 
 interface Repository {
 
@@ -13,4 +15,6 @@ interface Repository {
     suspend fun getMatchInfo(matchId: Long): MatchItem
 
     suspend fun searchPlayers(nickname: String): MutableList<PlayerSearchItem>
+
+    suspend fun getHeroes(): MutableList<Hero>
 }

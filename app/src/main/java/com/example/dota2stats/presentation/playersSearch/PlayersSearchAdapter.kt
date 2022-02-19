@@ -7,13 +7,12 @@ import com.example.dota2stats.R
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import jp.wasabeef.picasso.transformations.CropSquareTransformation
 
 class PlayersSearchAdapter: ListAdapter<PlayerSearchItem, PlayerSearchViewHolder>(PlayersSearchDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerSearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.plyers_search_item,
+            R.layout.players_search_item,
             parent,
             false
         )

@@ -1,5 +1,7 @@
 package com.example.dota2stats.domain.matchInfo
 
+import com.example.dota2stats.domain.constants.Hero
+
 data class InMatchPlayerItem (
     val account_id: Int,
     val assists: Int,
@@ -27,4 +29,5 @@ data class InMatchPlayerItem (
     val tower_damage: Int,
     val win: Int,
     val xp_per_min: Int,
+    val hero: Hero
         )

@@ -1,11 +1,10 @@
 package com.example.dota2stats.data.remoteModel
 
-import androidx.lifecycle.LiveData
+import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -14,6 +13,7 @@ import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 const val BASE_URL = "https://api.opendota.com/api/"
+const val IMAGE_URL = "https://api.opendota.com"
 
 interface ApiRequest {
     @GET("proMatches")
@@ -28,6 +28,9 @@ interface ApiRequest {
     suspend fun searchPlayers(
         @Query("q") nickname: String
     ): MutableList<PlayerSearchItem>
+
+    @GET("heroStats")
+    suspend fun getHeroes(): MutableList<Hero>
 
     companion object {
         fun create(): ApiRequest {

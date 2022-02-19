@@ -30,6 +30,9 @@ class PlayersSearchFragment : Fragment() {
         setupRecycler()
         viewModel.players.observe(this, {
             recyclerAdapter.submitList(it)
+            if (it.isNotEmpty()){
+                binding.progressBar.visibility = View.GONE
+            }
         })
     }
 

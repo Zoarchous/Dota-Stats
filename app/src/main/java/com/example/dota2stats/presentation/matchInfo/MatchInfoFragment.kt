@@ -63,11 +63,11 @@ class MatchInfoFragment : Fragment() {
 
     private fun setupRecycler() {
         with(binding.radiantTeamPlayers) {
-            radiantTeamAdapter = MatchInfoPlayerAdapter()
+            radiantTeamAdapter = MatchInfoPlayerAdapter(activity as MainActivity)
             adapter = radiantTeamAdapter
         }
         with(binding.direTeamPlayers) {
-            direTeamAdapter = MatchInfoPlayerAdapter()
+            direTeamAdapter = MatchInfoPlayerAdapter(activity as MainActivity)
             adapter = direTeamAdapter
         }
     }
