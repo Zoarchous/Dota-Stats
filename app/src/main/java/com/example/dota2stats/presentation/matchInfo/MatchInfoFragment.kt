@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.databinding.FragmentMatchInfoBinding
 import com.example.dota2stats.formatTime
 import com.example.dota2stats.presentation.MainActivity
@@ -70,7 +71,21 @@ class MatchInfoFragment : Fragment() {
             direTeamAdapter = MatchInfoPlayerAdapter(activity as MainActivity)
             adapter = direTeamAdapter
         }
+        setupItemClickListener()
     }
 
-
+    private fun setupItemClickListener(){
+        direTeamAdapter.onPlayerItemClickListener = {
+            this.findNavController().navigate(
+                MatchInfoFragmentDirections
+                    .actionMatchInfoFragmentToPlayerProfileFragment(it.account_id)
+            )
+        }
+        radiantTeamAdapter.onPlayerItemClickListener = {
+            this.findNavController().navigate(
+                MatchInfoFragmentDirections
+                    .actionMatchInfoFragmentToPlayerProfileFragment(it.account_id)
+            )
+        }
+    }
 }

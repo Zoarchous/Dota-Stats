@@ -23,7 +23,11 @@ import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class MatchInfoPlayerAdapter(var activity: Activity): ListAdapter<InMatchPlayerItem, MatchInfoPlayerViewHolder>(MatchInfoPlayerDiffCallback()) {
+
     var viewModel: MatchInfoViewModel? = null
+
+    var onPlayerItemClickListener: ((InMatchPlayerItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchInfoPlayerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.match_info_player_item,
@@ -48,5 +52,9 @@ class MatchInfoPlayerAdapter(var activity: Activity): ListAdapter<InMatchPlayerI
         viewHolder.death.text = "${item.deaths} / "
         viewHolder.assists.text = item.assists.toString()
         viewHolder.heroLvl.text = item.level.toString()
+
+        viewHolder.view.setOnClickListener {
+            onPlayerItemClickListener?.invoke(item)
+        }
     }
 }

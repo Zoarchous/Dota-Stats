@@ -3,8 +3,11 @@ package com.example.dota2stats.data.remoteModel
 import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
 import com.example.dota2stats.domain.playerProfile.PlayerProfile
+import com.example.dota2stats.domain.playerProfile.RecentMatchItem
+import com.example.dota2stats.domain.playerProfile.WinLose
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
+import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,6 +41,18 @@ interface ApiRequest {
         @Path("account_id") account_id: Int
     ): PlayerProfile
 
+    @GET ("players/{account_id}/recentMatches")
+    suspend fun getRecentMatches(
+        @Path("account_id") account_id: Int
+    ): MutableList<RecentMatchItem>
+
+    @GET ("players/{account_id}/wl")
+    suspend fun getWinrate(
+        @Path("account_id") account_id: Int
+    ): WinLose
+
+    @GET ("proPlayers")
+    suspend fun getProPlayers(): MutableList<ProPlayersItem>
 
     companion object {
         fun create(): ApiRequest {

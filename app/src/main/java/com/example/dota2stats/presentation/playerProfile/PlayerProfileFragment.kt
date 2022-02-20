@@ -28,6 +28,12 @@ class PlayerProfileFragment : Fragment() {
         viewModel.profile.observe(this,{
             Log.d("!!Prof", it.toString())
         })
+        viewModel.recentMatches.observe(this,{
+            Log.d("!!Recent", it.toString())
+        })
+        viewModel.winrate.observe(this,{
+            Log.d("!!Win", it.toString())
+        })
     }
 
     private fun setupViewModel() {
