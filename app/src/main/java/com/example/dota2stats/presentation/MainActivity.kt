@@ -16,6 +16,8 @@ import com.example.dota2stats.databinding.ActivityMainBinding
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.presentation.matchInfo.MatchInfoViewModel
 import com.example.dota2stats.presentation.matchInfo.MatchInfoViewModelFactory
+import com.example.dota2stats.presentation.playerProfile.PlayerProfileViewModel
+import com.example.dota2stats.presentation.playerProfile.PlayerProfileViewModelFactory
 import com.example.dota2stats.presentation.playersSearch.PlayerSearchViewModel
 import com.example.dota2stats.presentation.playersSearch.PlayerSearchViewModelFactory
 import com.example.dota2stats.presentation.proMatches.ProMatchesAdapter
@@ -32,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var playerSearchViewModel: PlayerSearchViewModel
     private lateinit var mainViewModel: MainViewModel
     private lateinit var matchViewModel: MatchInfoViewModel
+    private lateinit var profileViewModel: PlayerProfileViewModel
+    @Inject lateinit var profileFactory: PlayerProfileViewModelFactory
     @Inject lateinit var playerSearchFactory: PlayerSearchViewModelFactory
     @Inject lateinit var matchFactory: MatchInfoViewModelFactory
     @Inject lateinit var mainFactory: MainViewModelFactory
@@ -53,6 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         playerSearchViewModel =
             ViewModelProvider(this, playerSearchFactory)[PlayerSearchViewModel::class.java]
+
+        profileViewModel =
+            ViewModelProvider(this, profileFactory)[PlayerProfileViewModel::class.java]
     }
 
 }

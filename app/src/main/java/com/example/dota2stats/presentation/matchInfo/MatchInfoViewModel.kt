@@ -27,7 +27,7 @@ class MatchInfoViewModel(
 
     val matchItem = MutableLiveData<MatchItem>()
 
-    val heroesList = MutableLiveData<MutableList<Hero>>()
+    private val heroesList = MutableLiveData<MutableList<Hero>>()
 
 
     fun getPlayersList() {

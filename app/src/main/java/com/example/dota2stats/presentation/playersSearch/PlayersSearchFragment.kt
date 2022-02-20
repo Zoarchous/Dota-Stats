@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.R
 import com.example.dota2stats.databinding.FragmentPlayersSearchBinding
 import com.example.dota2stats.presentation.MainActivity
@@ -20,7 +21,7 @@ class PlayersSearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPlayersSearchBinding.inflate(layoutInflater)
+        binding = FragmentPlayersSearchBinding.inflate(inflater)
         return binding.root
     }
 
@@ -47,6 +48,16 @@ class PlayersSearchFragment : Fragment() {
         with(binding.playersRecycler){
             recyclerAdapter = PlayersSearchAdapter()
             adapter = recyclerAdapter
+        }
+        setupItemClickListener()
+    }
+
+    private fun setupItemClickListener(){
+        recyclerAdapter.onPlayerItemClickListener = {
+            this.findNavController().navigate(
+                PlayersSearchFragmentDirections
+                    .actionPlayersSearchFragmentToPlayerProfileFragment(it.account_id)
+            )
         }
     }
 }

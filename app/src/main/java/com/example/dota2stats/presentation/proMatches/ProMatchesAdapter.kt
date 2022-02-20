@@ -13,6 +13,7 @@ import com.example.dota2stats.formatTime
 
 class ProMatchesAdapter:
     ListAdapter<ProMatchItem, ProMatchItemViewHolder>(ProMatchItemDiffCallback()) {
+
     var onProMatchClickListener: ((ProMatchItem) -> Unit)? = null
 
     override fun onCreateViewHolder(

@@ -10,6 +10,8 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class PlayersSearchAdapter: ListAdapter<PlayerSearchItem, PlayerSearchViewHolder>(PlayersSearchDiffCallback()) {
 
+    var onPlayerItemClickListener: ((PlayerSearchItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerSearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.players_search_item,
@@ -26,5 +28,9 @@ class PlayersSearchAdapter: ListAdapter<PlayerSearchItem, PlayerSearchViewHolder
             .transform(CropCircleTransformation())
             .into(viewHolder.avatar)
         viewHolder.nickname.text = item.personaname
+
+        viewHolder.view.setOnClickListener {
+            onPlayerItemClickListener?.invoke(item)
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.example.dota2stats.data
 import com.example.dota2stats.data.remoteModel.RemoteDataSource
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.domain.Repository
+import com.example.dota2stats.domain.playerProfile.PlayerProfile
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
@@ -24,4 +25,8 @@ class RepositoryImpl @Inject constructor(
     override suspend fun searchPlayers(nickname: String) = remoteDataSource.searchPlayers(nickname)
 
     override suspend fun getHeroes() = remoteDataSource.getHeroes()
+
+    override suspend fun getPlayerProfile(account_id: Int) = remoteDataSource.getPlayerProfile(account_id)
+
+
 }

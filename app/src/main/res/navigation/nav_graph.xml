@@ -32,6 +32,9 @@
             app:launchSingleTop="false"
             app:popUpTo="@id/proMatchesFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_matchInfoFragment_to_playerProfileFragment"
+            app:destination="@id/playerProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/playersSearchFragment"
@@ -42,6 +45,17 @@
             android:name="nickname"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_playersSearchFragment_to_playerProfileFragment"
+            app:destination="@id/playerProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerProfileFragment"
+        android:name="com.example.dota2stats.presentation.playerProfile.PlayerProfileFragment"
+        android:label="PlayerProfileFragment" >
+        <argument
+            android:name="account_id"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

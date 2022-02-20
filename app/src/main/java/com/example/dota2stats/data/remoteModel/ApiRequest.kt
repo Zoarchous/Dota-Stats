@@ -2,6 +2,7 @@ package com.example.dota2stats.data.remoteModel
 
 import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
+import com.example.dota2stats.domain.playerProfile.PlayerProfile
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import okhttp3.OkHttpClient
@@ -31,6 +32,12 @@ interface ApiRequest {
 
     @GET("heroStats")
     suspend fun getHeroes(): MutableList<Hero>
+
+    @GET("players/{account_id}")
+    suspend fun getPlayerProfile(
+        @Path("account_id") account_id: Int
+    ): PlayerProfile
+
 
     companion object {
         fun create(): ApiRequest {

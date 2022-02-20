@@ -3,6 +3,7 @@ package com.example.dota2stats.data.remoteModel
 import android.util.Log
 import com.example.dota2stats.domain.constants.Hero
 import com.example.dota2stats.domain.matchInfo.MatchItem
+import com.example.dota2stats.domain.playerProfile.PlayerProfile
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import retrofit2.Call
@@ -34,5 +35,9 @@ class RemoteDataSource @Inject constructor() {
 
     suspend fun getHeroes(): MutableList<Hero>{
         return apiRequest.getHeroes()
+    }
+
+    suspend fun getPlayerProfile(account_id: Int): PlayerProfile {
+        return apiRequest.getPlayerProfile(account_id)
     }
 }
