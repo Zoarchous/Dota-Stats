@@ -19,7 +19,7 @@ data class ProPlayersItem(
     val last_login: String,
     val last_match_time: String,
     val loccountrycode: String,
-    val locked_until: Any,
+    val locked_until: Int,
     val name: String,
     val personaname: String,
     val plus: Boolean,

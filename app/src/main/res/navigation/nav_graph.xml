@@ -57,5 +57,14 @@
             android:name="account_id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/proPlayersFragment"
+        android:name="com.example.dota2stats.presentation.proPlayers.ProPlayersFragment"
+        android:label="fragment_pro_players"
+        tools:layout="@layout/fragment_pro_players" >
+        <action
+            android:id="@+id/action_proPlayersFragment_to_playerProfileFragment"
+            app:destination="@id/playerProfileFragment" />
+    </fragment>
 
 </navigation>

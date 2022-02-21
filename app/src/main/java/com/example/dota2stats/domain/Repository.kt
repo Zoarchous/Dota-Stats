@@ -7,6 +7,7 @@ import com.example.dota2stats.domain.playerProfile.RecentMatchItem
 import com.example.dota2stats.domain.playerProfile.WinLose
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
+import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 import retrofit2.Call
 
 interface Repository {
@@ -26,4 +27,6 @@ interface Repository {
     suspend fun getRecentMatches(account_id: Int): List<RecentMatchItem>
 
     suspend fun getWinrate(account_id: Int): WinLose
+
+    suspend fun getProPlayers(): MutableList<ProPlayersItem>
 }

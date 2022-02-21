@@ -2,6 +2,7 @@ package com.example.dota2stats.data.localModel.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
+import androidx.room.Insert
 import androidx.room.Query
 import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 
@@ -13,4 +14,7 @@ interface ProPlayersDao {
 
     @Query ("DELETE FROM pro_players")
     suspend fun clear()
+
+    @Insert
+    suspend fun insertProPlayers(proPlayers: MutableList<ProPlayersItem>)
 }
