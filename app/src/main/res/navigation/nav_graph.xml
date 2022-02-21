@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/playersSearchFragment"
         android:name="com.example.dota2stats.presentation.playersSearch.PlayersSearchFragment"
-        android:label="fragment_players_search"
+        android:label="@string/players"
         tools:layout="@layout/fragment_players_search" >
         <argument
             android:name="nickname"
@@ -52,7 +52,7 @@
     <fragment
         android:id="@+id/playerProfileFragment"
         android:name="com.example.dota2stats.presentation.playerProfile.PlayerProfileFragment"
-        android:label="PlayerProfileFragment" >
+        android:label="@string/player_profile" >
         <argument
             android:name="account_id"
             app:argType="integer" />
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/proPlayersFragment"
         android:name="com.example.dota2stats.presentation.proPlayers.ProPlayersFragment"
-        android:label="fragment_pro_players"
+        android:label="@string/pro_players"
         tools:layout="@layout/fragment_pro_players" >
         <action
             android:id="@+id/action_proPlayersFragment_to_playerProfileFragment"

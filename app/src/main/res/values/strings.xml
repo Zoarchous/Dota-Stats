@@ -22,4 +22,7 @@
     <string name="match_info_fragment_label">Match Details</string>
     <string name="home">Home</string>
     <string name="pro_players">Pro Players</string>
+    <string name="players">Players</string>
+    <string name="player_profile">Player Profile</string>
+
 </resources>

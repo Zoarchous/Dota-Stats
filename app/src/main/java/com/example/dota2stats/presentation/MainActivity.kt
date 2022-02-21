@@ -26,6 +26,8 @@ import com.example.dota2stats.presentation.playerProfile.PlayerProfileViewModelF
 import com.example.dota2stats.presentation.playersSearch.PlayerSearchViewModel
 import com.example.dota2stats.presentation.playersSearch.PlayerSearchViewModelFactory
 import com.example.dota2stats.presentation.proMatches.ProMatchesAdapter
+import com.example.dota2stats.presentation.proPlayers.ProPlayersViewModel
+import com.example.dota2stats.presentation.proPlayers.ProPlayersViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,14 +38,19 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
+
+    private lateinit var proPlayersViewModel: ProPlayersViewModel
     private lateinit var playerSearchViewModel: PlayerSearchViewModel
     private lateinit var mainViewModel: MainViewModel
     private lateinit var matchViewModel: MatchInfoViewModel
     private lateinit var profileViewModel: PlayerProfileViewModel
+
+    @Inject lateinit var proPlayersFactory: ProPlayersViewModelFactory
     @Inject lateinit var profileFactory: PlayerProfileViewModelFactory
     @Inject lateinit var playerSearchFactory: PlayerSearchViewModelFactory
     @Inject lateinit var matchFactory: MatchInfoViewModelFactory
     @Inject lateinit var mainFactory: MainViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,6 +68,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setupWithNavController(navController)
 
+        setupViewModels()
+    }
+
+    private fun setupViewModels(){
         mainViewModel =
             ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
 
@@ -72,6 +83,9 @@ class MainActivity : AppCompatActivity() {
 
         profileViewModel =
             ViewModelProvider(this, profileFactory)[PlayerProfileViewModel::class.java]
+
+        proPlayersViewModel =
+            ViewModelProvider(this, proPlayersFactory)[ProPlayersViewModel::class.java]
     }
 
     override fun onSupportNavigateUp(): Boolean {

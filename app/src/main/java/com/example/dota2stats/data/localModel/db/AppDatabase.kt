@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.dota2stats.data.localModel.dao.ProPlayersDao
 import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 
-@Database (entities = [ProPlayersItem::class], version = 1)
+@Database (entities = [ProPlayersItem::class], version = 2)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun proPlayersDao(): ProPlayersDao

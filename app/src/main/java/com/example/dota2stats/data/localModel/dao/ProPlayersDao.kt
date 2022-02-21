@@ -10,7 +10,7 @@ import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 @Dao
 interface ProPlayersDao {
     @Query ("SELECT * FROM pro_players")
-    fun getProPlayersDatabase(): MutableList<ProPlayersItem>
+    suspend fun getProPlayersDatabase(): MutableList<ProPlayersItem>
 
     @Query ("DELETE FROM pro_players")
     suspend fun clear()

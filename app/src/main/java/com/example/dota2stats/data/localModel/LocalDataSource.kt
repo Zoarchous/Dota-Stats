@@ -9,7 +9,7 @@ import javax.inject.Inject
 class LocalDataSource @Inject constructor(@ApplicationContext context: Context) {
     private val database = AppDatabase.getInstance(context)
 
-    fun getProPlayersDatabase(): MutableList<ProPlayersItem> {
+    suspend fun getProPlayersDatabase(): MutableList<ProPlayersItem> {
         return database.proPlayersDao().getProPlayersDatabase()
     }
 
