@@ -3,8 +3,10 @@ package com.example.dota2stats.presentation.playerProfile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.dota2stats.data.remoteModel.IMAGE_URL
 import com.example.dota2stats.domain.Repository
 import com.example.dota2stats.domain.playerProfile.*
+import com.example.dota2stats.findHero
 import kotlinx.coroutines.launch
 
 class PlayerProfileViewModel(
@@ -19,6 +21,10 @@ class PlayerProfileViewModel(
     var recentMatches = MutableLiveData<List<RecentMatchItem>>()
     var winrate = MutableLiveData<WinLose>()
 
+    lateinit var nickname: String
+    lateinit var wins: String
+    lateinit var lose: String
+
     fun getProfile() {
         viewModelScope.launch {
             val prof = getPlayerProfileUseCase.getPlayerProfile(account_id)
@@ -27,5 +33,13 @@ class PlayerProfileViewModel(
             winrate.postValue(getWinrateUseCase.getWinrate(account_id))
         }
     }
+
+//    fun getHero(position: Int): String? {
+//        val heroPosition = findHero(position)
+//        val img = recentMatches.value?.get(heroPosition)?.icon
+//        return IMAGE_URL + img
+//    }
+
+
 
 }

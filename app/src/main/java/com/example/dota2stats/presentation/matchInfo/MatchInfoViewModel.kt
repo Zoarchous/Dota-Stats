@@ -44,7 +44,6 @@ class MatchInfoViewModel(
         val heroPosition = findHero(position)
         val img = heroesList.value?.get(heroPosition)?.icon
         return IMAGE_URL + img
-
     }
 
 }

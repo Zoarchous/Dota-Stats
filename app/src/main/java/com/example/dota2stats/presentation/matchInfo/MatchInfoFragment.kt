@@ -19,6 +19,7 @@ class MatchInfoFragment : Fragment() {
     private lateinit var viewModel: MatchInfoViewModel
     private lateinit var radiantTeamAdapter: MatchInfoPlayerAdapter
     private lateinit var direTeamAdapter: MatchInfoPlayerAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
