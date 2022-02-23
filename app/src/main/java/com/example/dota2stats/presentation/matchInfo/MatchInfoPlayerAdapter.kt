@@ -22,7 +22,7 @@ import com.example.dota2stats.presentation.MainActivity
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
-class MatchInfoPlayerAdapter(var activity: Activity):
+class MatchInfoPlayerAdapter(var fragment: MatchInfoFragment):
     ListAdapter<InMatchPlayerItem, MatchInfoPlayerViewHolder>(MatchInfoPlayerDiffCallback()) {
 
     var viewModel: MatchInfoViewModel? = null
@@ -35,7 +35,7 @@ class MatchInfoPlayerAdapter(var activity: Activity):
             parent,
             false
         )
-        viewModel = ViewModelProvider(activity as MainActivity)[MatchInfoViewModel::class.java]
+        viewModel = ViewModelProvider(fragment)[MatchInfoViewModel::class.java]
         return MatchInfoPlayerViewHolder(view)
     }
 

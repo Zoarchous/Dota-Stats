@@ -11,12 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.R
 import com.example.dota2stats.databinding.FragmentPlayersSearchBinding
 import com.example.dota2stats.presentation.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class PlayersSearchFragment : Fragment() {
     private lateinit var binding: FragmentPlayersSearchBinding
     private lateinit var viewModel: PlayerSearchViewModel
     private lateinit var recyclerAdapter: PlayersSearchAdapter
+    @Inject
+    lateinit var playerSearchFactory: PlayerSearchViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +43,9 @@ class PlayersSearchFragment : Fragment() {
 
     private fun setupViewModel (){
         val arguments = PlayersSearchFragmentArgs.fromBundle(requireArguments())
-        viewModel = ViewModelProvider(activity as MainActivity)[PlayerSearchViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, playerSearchFactory)[PlayerSearchViewModel::class.java]
+//        viewModel = ViewModelProvider(activity as MainActivity)[PlayerSearchViewModel::class.java]
         viewModel.nickname = arguments.nickname ?: ""
         viewModel.getPlayers()
     }

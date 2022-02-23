@@ -12,14 +12,17 @@ import com.example.dota2stats.databinding.FragmentMatchInfoBinding
 import com.example.dota2stats.formatTime
 import com.example.dota2stats.presentation.MainActivity
 import com.example.dota2stats.showGameMode
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class MatchInfoFragment : Fragment() {
     private lateinit var binding: FragmentMatchInfoBinding
     private lateinit var viewModel: MatchInfoViewModel
     private lateinit var radiantTeamAdapter: MatchInfoPlayerAdapter
     private lateinit var direTeamAdapter: MatchInfoPlayerAdapter
-
+    @Inject
+    lateinit var matchFactory: MatchInfoViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,18 +61,19 @@ class MatchInfoFragment : Fragment() {
 
     private fun setupViewModel() {
         val arguments = MatchInfoFragmentArgs.fromBundle(requireArguments())
-        viewModel = ViewModelProvider(activity as MainActivity)[MatchInfoViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, matchFactory)[MatchInfoViewModel::class.java]
         viewModel.matchId = arguments.matchId
         viewModel.getPlayersList()
     }
 
     private fun setupRecycler() {
         with(binding.radiantTeamPlayers) {
-            radiantTeamAdapter = MatchInfoPlayerAdapter(activity as MainActivity)
+            radiantTeamAdapter = MatchInfoPlayerAdapter(this@MatchInfoFragment)
             adapter = radiantTeamAdapter
         }
         with(binding.direTeamPlayers) {
-            direTeamAdapter = MatchInfoPlayerAdapter(activity as MainActivity)
+            direTeamAdapter = MatchInfoPlayerAdapter(this@MatchInfoFragment)
             adapter = direTeamAdapter
         }
         setupItemClickListener()

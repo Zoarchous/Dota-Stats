@@ -14,10 +14,14 @@ import com.example.dota2stats.presentation.playersSearch.PlayerSearchViewModel
 import com.example.dota2stats.presentation.playersSearch.PlayersSearchAdapter
 import com.example.dota2stats.presentation.playersSearch.PlayersSearchFragmentArgs
 import com.example.dota2stats.presentation.playersSearch.PlayersSearchFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class ProPlayersFragment : Fragment() {
     private lateinit var binding: FragmentProPlayersBinding
+    @Inject
+    lateinit var proPlayersFactory: ProPlayersViewModelFactory
     private lateinit var viewModel: ProPlayersViewModel
     private lateinit var recyclerAdapter: ProPlayersAdapter
     override fun onCreateView(
@@ -39,7 +43,9 @@ class ProPlayersFragment : Fragment() {
     }
 
     private fun setupViewModel (){
-        viewModel = ViewModelProvider(activity as MainActivity)[ProPlayersViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, proPlayersFactory)[ProPlayersViewModel::class.java]
+//        viewModel = ViewModelProvider(activity as MainActivity)[ProPlayersViewModel::class.java]
         viewModel.getProPlayers()
     }
 

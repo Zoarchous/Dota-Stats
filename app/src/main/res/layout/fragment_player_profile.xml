@@ -29,7 +29,7 @@
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
+        android:visibility="visible"
         >
 
         <ImageView
@@ -93,7 +93,7 @@
 
         <TextView
             android:id="@+id/profileRecentText"
-            android:layout_width="@dimen/profile_view_width"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,11 +168,11 @@
                 android:layout_marginEnd="@dimen/default_margin">
 
                 <TextView
-                    android:id="@+id/header_hero_level"
+                    android:id="@+id/header_game_mode"
                     style="@style/HeaderTextView"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/hero_lvl"
+                    android:text="@string/mode"
                     android:layout_gravity="center_horizontal|center_vertical"/>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

@@ -14,15 +14,18 @@ import com.example.dota2stats.databinding.FragmentProMatchesBinding
 import com.example.dota2stats.presentation.MainActivity
 import com.example.dota2stats.presentation.MainViewModel
 import com.example.dota2stats.presentation.MainViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ProMatchesFragment : Fragment() {
     private lateinit var binding: FragmentProMatchesBinding
     private lateinit var recyclerAdapter: ProMatchesAdapter
     private lateinit var viewModel: MainViewModel
+    @Inject lateinit var mainFactory: MainViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +63,9 @@ class ProMatchesFragment : Fragment() {
     }
 
     private fun setupViewModel(){
-        viewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
+//        viewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
         viewModel.getProMatches()
 
     }

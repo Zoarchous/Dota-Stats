@@ -10,12 +10,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.databinding.FragmentPlayerProfileBinding
 import com.example.dota2stats.presentation.MainActivity
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlayerProfileFragment : Fragment() {
     private lateinit var binding: FragmentPlayerProfileBinding
     private lateinit var viewModel: PlayerProfileViewModel
     private lateinit var recyclerAdapter: RecentMatchesAdapter
+    @Inject
+    lateinit var profileFactory: PlayerProfileViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,14 +59,16 @@ class PlayerProfileFragment : Fragment() {
 
     private fun setupViewModel() {
         val arguments = PlayerProfileFragmentArgs.fromBundle(requireArguments())
-        viewModel = ViewModelProvider(activity as MainActivity)[PlayerProfileViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, profileFactory)[PlayerProfileViewModel::class.java]
+//        viewModel = ViewModelProvider(activity as MainActivity)[PlayerProfileViewModel::class.java]
         viewModel.account_id = arguments.accountId
         viewModel.getProfile()
     }
 
     private fun setupRecycler() {
         with(binding.recentRecycler) {
-            recyclerAdapter = RecentMatchesAdapter(activity as MainActivity)
+            recyclerAdapter = RecentMatchesAdapter(this@PlayerProfileFragment)
             adapter = recyclerAdapter
         }
         setupClickListener()

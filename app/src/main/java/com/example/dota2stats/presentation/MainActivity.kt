@@ -39,18 +39,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
 
-    private lateinit var proPlayersViewModel: ProPlayersViewModel
-    private lateinit var playerSearchViewModel: PlayerSearchViewModel
-    private lateinit var mainViewModel: MainViewModel
-    private lateinit var matchViewModel: MatchInfoViewModel
-    private lateinit var profileViewModel: PlayerProfileViewModel
-
-    @Inject lateinit var proPlayersFactory: ProPlayersViewModelFactory
-    @Inject lateinit var profileFactory: PlayerProfileViewModelFactory
-    @Inject lateinit var playerSearchFactory: PlayerSearchViewModelFactory
-    @Inject lateinit var matchFactory: MatchInfoViewModelFactory
-    @Inject lateinit var mainFactory: MainViewModelFactory
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -67,26 +55,9 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.setupWithNavController(navController, binding.drawerLayout)
 
         binding.navView.setupWithNavController(navController)
-
-        setupViewModels()
     }
 
-    private fun setupViewModels(){
-        mainViewModel =
-            ViewModelProvider(this, mainFactory)[MainViewModel::class.java]
 
-        matchViewModel =
-            ViewModelProvider(this, matchFactory)[MatchInfoViewModel::class.java]
-
-        playerSearchViewModel =
-            ViewModelProvider(this, playerSearchFactory)[PlayerSearchViewModel::class.java]
-
-        profileViewModel =
-            ViewModelProvider(this, profileFactory)[PlayerProfileViewModel::class.java]
-
-        proPlayersViewModel =
-            ViewModelProvider(this, proPlayersFactory)[ProPlayersViewModel::class.java]
-    }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

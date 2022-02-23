@@ -8,22 +8,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-fun formatTime (duration: Int): String {
+fun formatTime(duration: Int): String {
     var time = duration
-    val minutes = time/60
+    val minutes = time / 60
     time %= 60
     val seconds = time
 
-    val timeString: String = if (seconds>=10){
+    val timeString: String = if (seconds >= 10) {
         "$minutes:$seconds"
-    }else{
+    } else {
         "$minutes:0$seconds"
     }
     return timeString
 }
 
-fun showGameMode (mode: Int): String {
-    return  when(mode){
+fun showGameMode(mode: Int): String {
+    return when (mode) {
         0 -> "Unknown"
         1 -> "All Pick"
         2 -> "Captains Mode"
@@ -53,16 +53,16 @@ fun showGameMode (mode: Int): String {
     }
 }
 
-fun findHero(heroId: Int): Int{
+fun findHero(heroId: Int): Int {
     val heroPosition = when {
         heroId <= 23 -> {
-            heroId-1
+            heroId - 1
         }
         heroId <= 114 -> {
             heroId - 2
         }
 
-        heroId <= 121 ->  {
+        heroId <= 121 -> {
             heroId - 6
         }
         heroId == 123 -> {
@@ -75,8 +75,9 @@ fun findHero(heroId: Int): Int{
             heroId - 10
         }
         else -> {
-            heroId - 11
+            heroId - 15
         }
     }
     return heroPosition
 }
+

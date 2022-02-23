@@ -25,5 +25,6 @@
     <string name="players">Players</string>
     <string name="player_profile">Player Profile</string>
     <string name="recent_matches">Recent matches</string>
+    <string name="mode">Mode</string>
 
 </resources>

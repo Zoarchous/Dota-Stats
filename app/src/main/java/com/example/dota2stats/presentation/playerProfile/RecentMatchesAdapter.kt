@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.dota2stats.R
 import com.example.dota2stats.domain.playerProfile.RecentMatchItem
 import com.example.dota2stats.presentation.MainActivity
+import com.example.dota2stats.showGameMode
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
-class RecentMatchesAdapter(var activity: Activity):
+class RecentMatchesAdapter(var fragment: PlayerProfileFragment):
     ListAdapter<RecentMatchItem, RecentMatchesViewHolder>(RecentMatchesDiffCallback()) {
 
-    var vieModel: PlayerProfileViewModel? = null
+    var viewModel: PlayerProfileViewModel? = null
 
     var onRecentMatchItemClickListener: ((RecentMatchItem) -> Unit)? = null
 
@@ -22,19 +25,23 @@ class RecentMatchesAdapter(var activity: Activity):
             parent,
             false
         )
-        vieModel = ViewModelProvider(activity as MainActivity)[PlayerProfileViewModel::class.java]
+        viewModel = ViewModelProvider(fragment)[PlayerProfileViewModel::class.java]
         return RecentMatchesViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: RecentMatchesViewHolder, position: Int) {
         val item = getItem(position)
         val heroId = item.hero_id
-        viewHolder.heroIcon.setImageResource(R.drawable.ic_android_black_24dp)
-        viewHolder.playerName.text = vieModel?.profile?.value?.personaname
+        val icon = viewModel?.getHero(heroId)
+        Picasso.get()
+            .load(icon)
+            .transform(CropCircleTransformation())
+            .into(viewHolder.heroIcon)
+        viewHolder.playerName.text = viewModel?.getHeroName(heroId)
         viewHolder.kill.text = "${item.kills} / "
         viewHolder.death.text = "${item.deaths} / "
         viewHolder.assists.text = item.assists.toString()
-        viewHolder.heroLvl.text = "25"
+        viewHolder.heroLvl.text = showGameMode(item.game_mode)
 
         viewHolder.view.setOnClickListener {
             onRecentMatchItemClickListener?.invoke(item)
