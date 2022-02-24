@@ -1,4 +1,4 @@
-package com.example.dota2stats.presentation
+package com.example.dota2stats.presentation.proMatches
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.domain.Repository
 import kotlinx.coroutines.launch
 
-class MainViewModel(repository: Repository) : ViewModel() {
+class ProMatchesViewModel(repository: Repository) : ViewModel() {
 
 
     private val getProMatchesListUseCase = GetProMatchesListUseCase(repository)

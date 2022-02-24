@@ -25,9 +25,6 @@ class PlayerProfileViewModel(
     var winrate = MutableLiveData<WinLose>()
     private val heroesList = MutableLiveData<MutableList<Hero>>()
 
-    lateinit var nickname: String
-    lateinit var wins: String
-    lateinit var lose: String
 
     fun getProfile() {
         viewModelScope.launch {
