@@ -45,7 +45,6 @@ class ProPlayersFragment : Fragment() {
     private fun setupViewModel (){
         viewModel =
             ViewModelProvider(this, proPlayersFactory)[ProPlayersViewModel::class.java]
-//        viewModel = ViewModelProvider(activity as MainActivity)[ProPlayersViewModel::class.java]
         viewModel.getProPlayers()
     }
 

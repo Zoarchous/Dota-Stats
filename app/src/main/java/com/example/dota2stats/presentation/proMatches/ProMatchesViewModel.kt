@@ -10,9 +10,7 @@ import kotlinx.coroutines.launch
 
 class ProMatchesViewModel(repository: Repository) : ViewModel() {
 
-
     private val getProMatchesListUseCase = GetProMatchesListUseCase(repository)
-
 
     val list = MutableLiveData<List<ProMatchItem>>()
 

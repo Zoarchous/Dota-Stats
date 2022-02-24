@@ -45,7 +45,6 @@ class PlayersSearchFragment : Fragment() {
         val arguments = PlayersSearchFragmentArgs.fromBundle(requireArguments())
         viewModel =
             ViewModelProvider(this, playerSearchFactory)[PlayerSearchViewModel::class.java]
-//        viewModel = ViewModelProvider(activity as MainActivity)[PlayerSearchViewModel::class.java]
         viewModel.nickname = arguments.nickname ?: ""
         viewModel.getPlayers()
     }

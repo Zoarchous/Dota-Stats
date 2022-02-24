@@ -8,13 +8,10 @@ import com.example.dota2stats.domain.playerProfile.WinLose
 import com.example.dota2stats.domain.playersSearch.PlayerSearchItem
 import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.domain.proPlayers.ProPlayersItem
-import retrofit2.Call
 
 interface Repository {
 
     suspend fun getProMatchesList(): MutableList<ProMatchItem>
-
-    fun getProMatchItem(matchId: Long): ProMatchItem
 
     suspend fun getMatchInfo(matchId: Long): MatchItem
 

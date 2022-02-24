@@ -3,7 +3,6 @@ package com.example.dota2stats.data
 import com.example.dota2stats.data.localModel.LocalDataSource
 import com.example.dota2stats.data.remoteModel.RemoteDataSource
 import com.example.dota2stats.domain.Repository
-import com.example.dota2stats.domain.proMatches.ProMatchItem
 import com.example.dota2stats.domain.proPlayers.ProPlayersItem
 import javax.inject.Inject
 
@@ -14,11 +13,6 @@ class RepositoryImpl @Inject constructor(
 
 
     override suspend fun getProMatchesList() = remoteDataSource.getRemoteProMatchesList()
-
-
-    override fun getProMatchItem(matchId: Long): ProMatchItem {
-        TODO()
-    }
 
     override suspend fun getMatchInfo(matchId: Long) = remoteDataSource.getMatchInfo(matchId)
 

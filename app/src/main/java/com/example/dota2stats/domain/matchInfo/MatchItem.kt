@@ -1,6 +1,6 @@
 package com.example.dota2stats.domain.matchInfo
 
-data class MatchItem (
+data class MatchItem(
     val match_id: Long,
     val dire_score: Int,
     val duration: Int,

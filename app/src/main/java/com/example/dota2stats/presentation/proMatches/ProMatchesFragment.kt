@@ -56,7 +56,6 @@ class ProMatchesFragment : Fragment() {
     private fun setupViewModel(){
         viewModel =
             ViewModelProvider(this, proMatchesFactory)[ProMatchesViewModel::class.java]
-//        viewModel = ViewModelProvider(activity as MainActivity)[MainViewModel::class.java]
         viewModel.getProMatches()
 
     }

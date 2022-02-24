@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.databinding.FragmentPlayerProfileBinding
-import com.example.dota2stats.presentation.MainActivity
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -19,6 +18,7 @@ class PlayerProfileFragment : Fragment() {
     private lateinit var binding: FragmentPlayerProfileBinding
     private lateinit var viewModel: PlayerProfileViewModel
     private lateinit var recyclerAdapter: RecentMatchesAdapter
+
     @Inject
     lateinit var profileFactory: PlayerProfileViewModelFactory
     override fun onCreateView(
@@ -53,7 +53,6 @@ class PlayerProfileFragment : Fragment() {
 
         return binding.root
     }
-
 
 
     private fun setupViewModel() {
