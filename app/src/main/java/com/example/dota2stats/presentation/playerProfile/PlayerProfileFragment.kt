@@ -35,33 +35,31 @@ class PlayerProfileFragment : Fragment() {
                 .into(binding.profileAvatar)
             binding.profileNickname.text = it.personaname
 
+            viewModel.winrate.observe(this, { wr ->
+                binding.profileWins.text = "Win: ${wr.win}"
+                binding.profileLoses.text = "Lose: ${wr.lose}"
+                val winrate = calculateWinrate(wr.win, wr.lose)
+                binding.profileWinrate.text = "Winrate: $winrate%"
+
+                viewModel.recentMatches.observe(this, { rm ->
+                    recyclerAdapter.submitList(rm)
+                    if (rm.isNotEmpty()) {
+                        binding.progressBar.visibility = View.GONE
+                        binding.profileLayout.visibility = View.VISIBLE
+                    }
+                })
+            })
         })
-        viewModel.recentMatches.observe(this, {
-            recyclerAdapter.submitList(it)
-            if (it.isNotEmpty()) {
-                binding.progressBar.visibility = View.GONE
-                binding.profileLayout.visibility = View.VISIBLE
-            }
-        })
-        viewModel.winrate.observe(this, {
-            binding.profileWins.text = "Win: ${it.win}"
-            binding.profileLoses.text = "Lose: ${it.lose}"
-            val winrate = calculateWinrate(it.win, it.lose)
-            binding.profileWinrate.text = "Winrate: $winrate%"
-        })
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-    }
 
     private fun setupViewModel() {
         val arguments = PlayerProfileFragmentArgs.fromBundle(requireArguments())
         viewModel =
             ViewModelProvider(this, profileFactory)[PlayerProfileViewModel::class.java]
-//        viewModel = ViewModelProvider(activity as MainActivity)[PlayerProfileViewModel::class.java]
         viewModel.account_id = arguments.accountId
         viewModel.getProfile()
     }
