@@ -38,8 +38,10 @@ class ProMatchesAdapter:
         viewHolder.radiantIcon.setImageResource(trophy)
         if (item.radiant_win){
             viewHolder.direIcon.visibility = View.INVISIBLE
+            viewHolder.radiantIcon.visibility = View.VISIBLE
         } else {
             viewHolder.radiantIcon.visibility = View.INVISIBLE
+            viewHolder.direIcon.visibility = View.VISIBLE
         }
 
         viewHolder.view.setOnClickListener {

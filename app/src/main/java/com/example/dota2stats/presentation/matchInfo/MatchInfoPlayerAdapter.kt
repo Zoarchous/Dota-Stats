@@ -48,7 +48,7 @@ class MatchInfoPlayerAdapter(var fragment: MatchInfoFragment):
             .load(icon)
             .transform(CropCircleTransformation())
             .into(viewHolder.heroIcon)
-        viewHolder.playerName.text = item.personaname
+        viewHolder.playerName.text = item.personaname ?: "Player Unknown"
         viewHolder.kill.text = "${item.kills} / "
         viewHolder.death.text = "${item.deaths} / "
         viewHolder.assists.text = item.assists.toString()
