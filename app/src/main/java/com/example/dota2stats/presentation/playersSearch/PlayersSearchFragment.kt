@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dota2stats.R
@@ -37,6 +38,8 @@ class PlayersSearchFragment : Fragment() {
             recyclerAdapter.submitList(it)
             if (it.isNotEmpty()){
                 binding.progressBar.visibility = View.GONE
+            }else{
+                Toast.makeText(context, "No players with such name", Toast.LENGTH_LONG).show()
             }
         })
     }
